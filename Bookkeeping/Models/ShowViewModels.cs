@@ -6,10 +6,10 @@ using System.Web;
 
 namespace Bookkeeping.Models
 {
-	public class Show
+	public class ShowViewModels
 	{		
 		public string Kind { get; set; }		
-		public string Date { get; set; }		
+		public DateTime Date { get; set; }		
 		public int Money { get; set; }
 	}
 }

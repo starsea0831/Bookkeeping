@@ -1,4 +1,4 @@
-﻿@model List<Show>
+﻿@model List<ShowViewModels> 
 
 <div class="row">
 	<div class="col-md-12">
@@ -11,7 +11,7 @@
 			</tr>
 			@{
 				int i = 1;
-				foreach (Show element in Model)
+				foreach (ShowViewModels element in Model)
 				{
 					<tr>
 						<td>@i</td>

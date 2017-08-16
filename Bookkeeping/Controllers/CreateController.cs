@@ -12,14 +12,14 @@ namespace Bookkeeping.Controllers
 		// GET: Create
 		public ActionResult Index()
 		{
-			List<Show> shows = new List<Show>();
-			shows.Add(new Show() { Kind = "支出", Date = "2017-08-01", Money = 300 });
-			shows.Add(new Show() { Kind = "支出", Date = "2017-08-02", Money = 300 });
-			shows.Add(new Show() { Kind = "收入", Date = "2017-08-03", Money = 500 });
-			shows.Add(new Show() { Kind = "支出", Date = "2017-08-04", Money = 300 });
-			shows.Add(new Show() { Kind = "支出", Date = "2017-08-05", Money = 400 });
-			shows.Add(new Show() { Kind = "收入", Date = "2017-08-06", Money = 300 });
-			shows.Add(new Show() { Kind = "支出", Date = "2017-08-07", Money = 700 });
+			List<ShowViewModels> shows = new List<ShowViewModels>();
+			shows.Add(new ShowViewModels() { Kind = "支出", Date = new DateTime(2017, 8, 1), Money = 300 });
+			shows.Add(new ShowViewModels() { Kind = "支出", Date = new DateTime(2017, 8, 2), Money = 300 });
+			shows.Add(new ShowViewModels() { Kind = "收入", Date = new DateTime(2017, 8, 3), Money = 500 });
+			shows.Add(new ShowViewModels() { Kind = "支出", Date = new DateTime(2017, 8, 4), Money = 300 });
+			shows.Add(new ShowViewModels() { Kind = "支出", Date = new DateTime(2017, 8, 5), Money = 400 });
+			shows.Add(new ShowViewModels() { Kind = "收入", Date = new DateTime(2017, 8, 6), Money = 300 });
+			shows.Add(new ShowViewModels() { Kind = "支出", Date = new DateTime(2017, 8, 7), Money = 700 });
 			return View(shows);
 		}
 	}
