@@ -15,7 +15,7 @@ namespace Bookkeeping.Models
 		public DateTime Date { get; set; }
 		[Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
 		public int Money { get; set; }
-		[StringLength(3, ErrorMessage = "備註最多輸入100個字元")]
+		[StringLength(100, ErrorMessage = "備註最多輸入100個字元")]
 		public string Description { get; set; }
 	}	
 }
