@@ -11,23 +11,55 @@ namespace Bookkeeping.Controllers
 	public class CreateController : Controller
 	{
 		// GET: Create
+		private dbService _srv;
+		public CreateController() {
+			if (_srv == null) {
+				_srv = new dbService();
+			}
+		}
 		public ActionResult Index()
 		{
-			dbService srv =new dbService();
-			List<AccountBook> AcBook = srv.GetAccountBooks();
-			List<ShowViewModels> shows = new List<ShowViewModels>();
-			foreach (var accountBook in AcBook)
-			{
-				shows.Add(new ShowViewModels()
-				{
-					Kind = accountBook.Categoryyy == 0 ? "收入" : "支出",
-					Date = accountBook.Dateee,
-					Money = accountBook.Amounttt
-				}
-				);
-			}
+			return View(updateviewmodel());
+		}
 
-			return View(shows);
+		[HttpPost]
+		public ActionResult Index(IndexViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				addNewRecord(model);
+				return View(updateviewmodel());
+			};
+			return RedirectToAction("Index");
+		}
+
+		private void addNewRecord(IndexViewModel model) {
+			AccountBook acBook = new AccountBook();
+			acBook.Id = Guid.NewGuid();
+			acBook.Amounttt = model.Book.Money;
+			acBook.Categoryyy = model.Book.Kind;
+			acBook.Dateee = model.Book.Date;
+			acBook.Remarkkk = model.Book.Description;
+			_srv.AddAccountBook(acBook);
+		}
+
+		private IndexViewModel updateviewmodel()
+		{
+			List<AccountBook> acBooks = _srv.GetAccountBooks();
+			List<BookViewModel> books = new List<BookViewModel>();
+			foreach (var item in acBooks)
+			{
+				books.Add(new BookViewModel()
+				{
+					Date = item.Dateee,
+					Description = item.Remarkkk,
+					Kind = item.Categoryyy,
+					Money = item.Amounttt
+				});
+			}
+			IndexViewModel viewmodel = new IndexViewModel();
+			viewmodel.Books = books;
+			return viewmodel;
 		}
 	}
 }

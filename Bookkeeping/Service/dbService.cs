@@ -12,5 +12,11 @@ namespace Bookkeeping.Service
 			SkillTreeHomeworkEntities1 _dbcontext = new SkillTreeHomeworkEntities1();
 			return _dbcontext.AccountBook.ToList();
 		}
+
+		public void AddAccountBook(AccountBook entity) {
+			SkillTreeHomeworkEntities1 _dbcontext = new SkillTreeHomeworkEntities1();
+			_dbcontext.AccountBook.Add(entity);
+			_dbcontext.SaveChanges();
+		}
 	}
 }

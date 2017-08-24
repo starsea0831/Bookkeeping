@@ -135,7 +135,8 @@
     <Compile Include="Models\AccountBook.cs">
       <DependentUpon>SkillTreeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShowViewModels.cs" />
+    <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Models\SkillTreeModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

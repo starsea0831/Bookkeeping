@@ -1,4 +1,4 @@
-﻿@model List<ShowViewModels> 
+﻿@model IndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -26,34 +26,39 @@
 	<div class="container body-content">
 
 		<div class="well">
-			<form class="form-horizontal">
+			<form name="formVM" method="post" class="form-horizontal">
 				<div class="form-group">
 					<label for="category" class="col-sm-2 control-label">類別</label>
 					<div class="col-sm-10">
-						<select id="category" class="form-control">
+						<select id="category" name="Book.Kind" class="form-control">
 							<option value="" selected>請選擇</option>
-							<option>支出</option>
-							<option>收入</option>
+							<option value="0">支出</option>
+							<option value="1">收入</option>
 						</select>
+						@*@Html.DropDownList("Kind", (List<SelectListItem>)ViewBag.Category,new { @class= "form-control" })*@
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="money" class="col-sm-2 control-label">金額</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="money" placeholder="金額">
+						@*<input type="text" class="form-control" id="money" >*@
+						@Html.TextBoxFor(x=>x.Book.Money, new { placeholder = "金額", @class = "form-control" })						
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="date" class="col-sm-2 control-label">日期</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="date" placeholder="日期">
+						@*<input type="text" class="form-control" id="date" placeholder="日期">*@
+						<input type="date" name="Book.Date" />
+						@*@Html.TextBoxFor(x => x.Date, new { placeholder = "日期", @class = "form-control" })*@						
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="description" class="col-sm-2 control-label">備註</label>
 					<div class="col-sm-10">
-						<textarea class="form-control" id="description">
-                </textarea>
+						@*<textarea class="form-control" id="description">
+                </textarea>*@						
+						@Html.TextAreaFor(x => x.Book.Description, new { placeholder = "備註", @class = "form-control" })						
 					</div>
 				</div>
 				<div class="form-group">
@@ -63,7 +68,7 @@
 				</div>
 			</form>
 		</div>
-		@Html.Partial("contentView")
+		@Html.Partial("contentView",Model.Books)
 		<hr />
 		<footer>
 			<p>&copy; 2017 - <a href="#">SkillTree</a></p>
