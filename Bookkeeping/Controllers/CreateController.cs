@@ -25,12 +25,20 @@ namespace Bookkeeping.Controllers
 		[HttpPost]
 		public ActionResult Index(IndexViewModel model)
 		{
+			DateTime today = DateTime.Now;
+
+			if (today.Ticks < model.Book.Date.Ticks)
+			{
+				ModelState.AddModelError("DateCompare", "日期不能大於今日");
+			}
+
 			if (ModelState.IsValid)
 			{
 				addNewRecord(model);
 				return View(updateviewmodel());
 			};
-			return RedirectToAction("Index");
+			model.Books = updateviewmodel().Books;
+			return View(model);
 		}
 
 		private void addNewRecord(IndexViewModel model) {

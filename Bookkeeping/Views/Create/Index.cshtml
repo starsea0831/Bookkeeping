@@ -1,9 +1,7 @@
 ﻿@model IndexViewModel
-
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
-
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -35,30 +33,30 @@
 							<option value="0">支出</option>
 							<option value="1">收入</option>
 						</select>
-						@*@Html.DropDownList("Kind", (List<SelectListItem>)ViewBag.Category,new { @class= "form-control" })*@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="money" class="col-sm-2 control-label">金額</label>
-					<div class="col-sm-10">
-						@*<input type="text" class="form-control" id="money" >*@
-						@Html.TextBoxFor(x=>x.Book.Money, new { placeholder = "金額", @class = "form-control" })						
+					<div class="form-inline">
+						<label for="money" class="col-sm-2 control-label">金額</label>
+						<div class="col-sm-10">
+							@Html.TextBoxFor(x => x.Book.Money, new { placeholder = "金額", @class = "form-control" })
+							@Html.ValidationMessageFor(x => x.Book.Money, "", new { @class = "text-danger" })
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="date" class="col-sm-2 control-label">日期</label>
 					<div class="col-sm-10">
-						@*<input type="text" class="form-control" id="date" placeholder="日期">*@
 						<input type="date" name="Book.Date" />
-						@*@Html.TextBoxFor(x => x.Date, new { placeholder = "日期", @class = "form-control" })*@						
+						@Html.ValidationMessage("DateCompare", new { @class = "text-danger" })
+
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="description" class="col-sm-2 control-label">備註</label>
-					<div class="col-sm-10">
-						@*<textarea class="form-control" id="description">
-                </textarea>*@						
-						@Html.TextAreaFor(x => x.Book.Description, new { placeholder = "備註", @class = "form-control" })						
+					<div class="col-sm-10">					
+						@Html.TextAreaFor(x => x.Book.Description, new { placeholder = "備註", @class = "form-control" })
+						@Html.ValidationMessageFor(x => x.Book.Description,"",new { @class="text-danger"})
 					</div>
 				</div>
 				<div class="form-group">
@@ -74,6 +72,7 @@
 			<p>&copy; 2017 - <a href="#">SkillTree</a></p>
 		</footer>
 	</div>
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"></script>
 
+@section scripts{
+
+}

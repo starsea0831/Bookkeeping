@@ -15,7 +15,14 @@
 				{
 					<tr>
 						<td>@i</td>
-						<td>@element.Kind</td>
+						@if (element.Kind == 0)
+						{
+							<td><font color="blue">支出</font></td>
+						}
+						else
+						{
+							<td><font color="red">收入</font></td>
+						}
 						<td>@element.Date</td>
 						<td>@element.Money</td>
 					</tr>

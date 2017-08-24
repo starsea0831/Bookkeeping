@@ -9,12 +9,13 @@ namespace Bookkeeping.Models
 {
 	public class BookViewModel
 	{
-		[Required]
-		public int Kind { get; set; }		
+		
+		public int Kind { get; set; }	
+		
 		public DateTime Date { get; set; }
-		[Required]
+		[Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
 		public int Money { get; set; }
-
+		[StringLength(3, ErrorMessage = "備註最多輸入100個字元")]
 		public string Description { get; set; }
 	}	
 }

@@ -15,10 +15,10 @@ namespace Bookkeeping.Models
 
 	}
 
-	public enum MyCategory {
-		[Display(Name = "支出")]
-		Expend,
-		[Display(Name = "收入")]
-		InCome
-	}
+	//public enum MyCategory {
+	//	[Display(Name = "支出")]
+	//	Expend,
+	//	[Display(Name = "收入")]
+	//	InCome
+	//}
 }
